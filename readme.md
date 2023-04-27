@@ -23,5 +23,5 @@ helm install my-release metis-data/metis-md-collector \
 
 
 ### Environment:
-- DB_CONNECTION_STRINGS: your database connection details e.g 'postgres://user:password@host:port/database'
-- METIS_API_KEY: Metis Api Key generated at [Metis](https://app.metisdata.io/)
+- `DB_CONNECTION_STRINGS`: your database connection details e.g 'postgres://user:password@host:port/database'
+- `METIS_API_KEY`: Metis Api Key generated at [Metis](https://app.metisdata.io/)
