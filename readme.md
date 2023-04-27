@@ -6,12 +6,6 @@
 
 Using the [Documentation](https://docs.metisdata.io/metis/metadata-collector/troubleshooting-the-production-db) of [Metis](https://app.metisdata.io/).
 
-## Installation
-
-```bash
-$ npm i @metis-data/pg-interceptor --save
-```
-
 ## Setup
 
 1. Add metis helm chart
