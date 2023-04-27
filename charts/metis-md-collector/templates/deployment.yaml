@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "metis-md-collector.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "metis-md-collector.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "metis-md-collector.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          env:
+            - name: APP_ENV
+              value: {{ .Values.appEnv }}
+            - name: API_GATEWAY_HOST
+              value: {{ .Values.apiGatewayHost }}
+            - name: API_GATEWAY_PATH
+              value: {{ .Values.apiGatewayPath }}
+            - name: API_GATEWAY_PORT
+              value: {{ .Values.apiGatewayPort }}
+            - name: WEB_APP_HOST
+              value: {{ .Values.webAppHost }}
+            - name: WEB_APP_PORT
+              value: {{ .Values.webAppPort }}
+            - name: API_KEY
+              value: {{ .Values.apiKey }}
+            - name: DB_CONNECTION_STRINGS
+              value: {{ .Values.dbConnectionStrings }}
+            - name: CRON_LOCAL_RUNNING_EXP
+              value: {{ .Values.cronLocalRunningExp }}
+            - name: IGNORE_CURRENT_TIME
+              value: {{ .Values.ignoreCurrentTime }}
