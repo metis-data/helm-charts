@@ -8,6 +8,6 @@ entries:
     digest: 4204c45ce486cb26939a677c2cc9c39c6914587ce2a8f9510929a01ace980d40
     name: metis-md-collector
     urls:
-    - https://github.com/metis-data/helm-charts/charts/metis-md-collector-0.1.0.tgz
+    - https://metis-data.github.io/helm-charts/charts/metis-md-collector-0.1.0.tgz
     version: 0.1.0
 generated: "2023-04-27T10:57:08.131258+03:00"
