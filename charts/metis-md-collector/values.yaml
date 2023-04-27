@@ -3,12 +3,6 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
-image:
-  repository: public.ecr.aws/o2c0x5x8/metis-md-collector
-  pullPolicy: Always
-  tag: latest
-
 appEnv: production
 apiGatewayHost: ingest.metisdata.io
 apiGatewayPath: /md-collector
