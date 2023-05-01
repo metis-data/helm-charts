@@ -41,5 +41,4 @@ spec:
             - name: IGNORE_CURRENT_TIME
               value: "{{ .Values.ignoreCurrentTime }}"
             - name: CRON_LOCAL_RUNNING_EXP 
-              value: "{{ .Values.cronLocalRunningExp | quote}}"
-              value: {{ .Values.cronLocalRunningExp | quote}}
+              value: "{{ .Values.cronLocalRunningExp }}"
