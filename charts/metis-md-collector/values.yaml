@@ -1,8 +1,7 @@
-# Default values for metis-md-collector.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+podAnnotations: {}
 replicaCount: 1
+
+# Default values for metis-md-collector.
 appEnv: production
 apiGatewayHost: ingest.metisdata.io
 apiGatewayPath: /md-collector
@@ -13,3 +12,4 @@ apiKey: YOUR_METIS_KEY
 dbConnectionStrings: CONNECTION_STRING_1;CONNECTION_STRING2;CONNECTION_STRING3
 cronLocalRunningExp: '* * * * *'
 ignoreCurrentTime: false
+

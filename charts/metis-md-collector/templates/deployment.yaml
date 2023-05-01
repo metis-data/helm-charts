@@ -10,9 +10,12 @@ spec:
       release: {{ .Release.Name }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: {{ include "metis-md-collector.name" . }}
-        release: {{ .Release.Name }}
+        {{- include "metis-md-collector.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -32,10 +35,10 @@ spec:
             - name: WEB_APP_PORT
               value: {{ .Values.webAppPort }}
             - name: API_KEY
-              value: {{ .Values.apiKey }}
+              value: {{ .Values.apiKey | required "Api key is required" }}
             - name: DB_CONNECTION_STRINGS
-              value: {{ .Values.dbConnectionStrings }}
-            - name: CRON_LOCAL_RUNNING_EXP
-              value: {{ .Values.cronLocalRunningExp }}
+              value: {{ .Values.dbConnectionStrings | required "Connection string is required" }}
             - name: IGNORE_CURRENT_TIME
               value: {{ .Values.ignoreCurrentTime }}
+            - name: CRON_LOCAL_RUNNING_EXP 
+              value: {{ .Values.cronLocalRunningExp | quote}}

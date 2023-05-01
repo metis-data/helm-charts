@@ -3,11 +3,11 @@ entries:
   metis-md-collector:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-05-01T18:44:24.629146+03:00"
+    created: "2023-05-01T20:38:20.920085+03:00"
     description: A Helm chart for the Metis MD Collector application
-    digest: 4829b58d3545e873514e9dd2ddc7bba1b43a7e511b9b6dad545692cc843bbfdb
+    digest: 6ba4faf2e4bc6b6662ebf4bf900855af0844a01059bd8713f79190fad7950b47
     name: metis-md-collector
     urls:
-    - https://metis-data.github.io/helm-charts/charts/metis-md-collector-0.1.3.tgz
-    version: 0.1.3
-generated: "2023-05-01T18:44:24.628268+03:00"
+    - https://metis-data.github.io/helm-charts/charts/metis-md-collector-0.1.4.tgz
+    version: 0.1.4
+generated: "2023-05-01T20:38:20.918213+03:00"
