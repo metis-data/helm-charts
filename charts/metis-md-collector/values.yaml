@@ -11,5 +11,5 @@ webAppHost: app.metisdata.io
 webAppPort: 443
 apiKey: YOUR_METIS_KEY
 dbConnectionStrings: CONNECTION_STRING_1;CONNECTION_STRING2;CONNECTION_STRING3
-cronLocalRunningExp: * * * * *
+cronLocalRunningExp: '* * * * *'
 ignoreCurrentTime: false
