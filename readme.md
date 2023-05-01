@@ -50,7 +50,7 @@ You can then run `helm search repo teletrace` to see the charts.
 
 
 helm install --dry-run --debug metis-mmc metis-data/metis-md-collector \
-  --set METIS_API_KEY=DHuUr5UXrg1jP0ZuB8Sl35t970UpQ5eFr75SD0xb \
+  --set METIS_API_KEY=DHuUr5UXrg1jl35t970UpQ5eFr75SD0xb \
   --set DB_CONNECTION_STRINGS=postgresql://postgres:postgres@localhost:5432/platform;
 
 
