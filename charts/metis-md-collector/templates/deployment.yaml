@@ -1,13 +1,16 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{ include "metis-md-collector.fullname" . }}
+  labels:
+    {{- include "metis-md-collector.labels" . | nindent 4 }}
 spec:
+  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
-      app: {{ include "metis-md-collector.name" . }}
-      release: {{ .Release.Name }}
+      {{- include "metis-md-collector.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -17,10 +20,19 @@ spec:
       labels:
         {{- include "metis-md-collector.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "metis-md-collector.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          image: public.ecr.aws/o2c0x5x8/metis-md-collector:latest
-          imagePullPolicy: Always
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: APP_ENV
               value: "{{ .Values.appEnv }}"
@@ -42,3 +54,17 @@ spec:
               value: "{{ .Values.ignoreCurrentTime }}"
             - name: CRON_LOCAL_RUNNING_EXP 
               value: "{{ .Values.cronLocalRunningExp }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
