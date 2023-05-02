@@ -1,0 +1,16 @@
+version: '2'
+services:
+  metis-md-collector:
+    container_name: metis-md-collector
+    image: public.ecr.aws/o2c0x5x8/metis-md-collector:latest
+    environment:
+      - APP_ENV=PRODUCTION
+      - API_GATEWAY_HOST=ingest.metisdata.io
+      - API_GATEWAY_PATH=/md-collector
+      - API_GATEWAY_PORT=443
+      - WEB_APP_HOST=app.metisdata.io
+      - WEB_APP_PORT=443
+      - API_KEY=Mq3YFPV9m46tMiu7jm7Tw8YTY2enlcY63
+      - DB_CONNECTION_STRINGS=postgresql://postgres:postgres@localhost:5432/platform
+      - IGNORE_CURRENT_TIME=true
+      - CRON_LOCAL_RUNNING_EXP=* * * * *

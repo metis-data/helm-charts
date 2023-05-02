@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: metis-md-collector
+  name: metis-md-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: metis-md-collector
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: ./kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: metis-md-collector
+    spec:
+      containers:
+        - env:
+            - name: API_GATEWAY_HOST
+              value: ingest.metisdata.io
+            - name: API_GATEWAY_PATH
+              value: /md-collector
+            - name: API_GATEWAY_PORT
+              value: "443"
+            - name: API_KEY
+              value: Mq3YFPV9m468YTY2enlcY63
+            - name: APP_ENV
+              value: "PRODUCTION"
+            - name: CRON_LOCAL_RUNNING_EXP
+              value: '* * * * *'
+            - name: DB_CONNECTION_STRINGS
+              value: postgresql://postgres:postgres@localhost:5432/platform
+            - name: IGNORE_CURRENT_TIME
+              value: "true"
+            - name: WEB_APP_HOST
+              value: "app.metisdata.io"
+            - name: WEB_APP_PORT
+              value: "443"
+          image: public.ecr.aws/o2c0x5x8/metis-md-collector:latest
+          name: metis-md-collector
+          resources: {}
+      restartPolicy: Always
+status: {}

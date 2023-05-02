@@ -40,20 +40,20 @@ This command will install metis collector in your Kubernetes cluster.
 helm install metis-mmc metis-data/metis-md-collector -f my-values.yml --namespace metis --create-namespace
 ```
 
+Example:
+```
+helm install --dry-run --debug metis-mmc metis-data/metis-md-collector \
+  --set apiKey=DHuUr5UXrg1jl370UpQ5eFr75SD0xb \
+  --set dbConnectionStrings=postgresql://postgres:postgres@localhost:5432/platform;
+```
+
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages.\
 You can then run `helm search repo teletrace` to see the charts.
 
 ### Environment:
 - `DB_CONNECTION_STRINGS`: your database connection details e.g 'postgres://user:password@host:port/database'
-- `METIS_API_KEY`: Metis Api Key generated at [Metis](https://app.metisdata.io/)
-
-
-helm install --dry-run --debug metis-mmc metis-data/metis-md-collector \
-  --set METIS_API_KEY=DHuUr5UXrg1jl35t970UpQ5eFr75SD0xb \
-  --set DB_CONNECTION_STRINGS=postgresql://postgres:postgres@localhost:5432/platform;
-
-
+- `API_KEY`: Metis Api Key generated at [Metis](https://app.metisdata.io/)
 
 
 ## Conclusion
