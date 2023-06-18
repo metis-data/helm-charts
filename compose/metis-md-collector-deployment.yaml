@@ -25,26 +25,31 @@ spec:
     spec:
       containers:
         - env:
-            - name: API_GATEWAY_HOST
-              value: ingest.metisdata.io
-            - name: API_GATEWAY_PATH
-              value: /md-collector
-            - name: API_GATEWAY_PORT
-              value: "443"
+
             - name: API_KEY
-              value: Mq3YFPV9m468YTY2enlcY63
-            - name: APP_ENV
-              value: "PRODUCTION"
-            - name: CRON_LOCAL_RUNNING_EXP
-              value: '* * * * *'
+              value: "{{ .Values.apiKey | required "Api key is required" }}"
             - name: DB_CONNECTION_STRINGS
-              value: postgresql://postgres:postgres@localhost:5432/platform
-            - name: IGNORE_CURRENT_TIME
-              value: "true"
-            - name: WEB_APP_HOST
-              value: "app.metisdata.io"
-            - name: WEB_APP_PORT
-              value: "443"
+              value: "{{ .Values.dbConnectionStrings | required "Connection string is required" }}"
+            # - name: API_GATEWAY_HOST
+            #   value: ingest.metisdata.io
+            # - name: API_GATEWAY_PATH
+            #   value: /md-collector
+            # - name: API_GATEWAY_PORT
+            #   value: "443"
+            # - name: API_KEY
+            #   value: Mq3YFPV9m468YTY2enlcY63
+            # - name: APP_ENV
+            #   value: "PRODUCTION"
+            # - name: CRON_LOCAL_RUNNING_EXP
+            #   value: '* * * * *'
+            # - name: DB_CONNECTION_STRINGS
+            #   value: postgresql://postgres:postgres@localhost:5432/platform
+            # - name: IGNORE_CURRENT_TIME
+            #   value: "true"
+            # - name: WEB_APP_HOST
+            #   value: "app.metisdata.io"
+            # - name: WEB_APP_PORT
+            #   value: "443"
           image: public.ecr.aws/o2c0x5x8/metis-md-collector:latest
           name: metis-md-collector
           resources: {}
