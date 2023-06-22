@@ -5,10 +5,8 @@ apiGatewayPath: /md-collector
 apiGatewayPort: 443
 webAppHost: app.metisdata.io
 webAppPort: 443
-apiKey: YOUR_METIS_KEY
-dbConnectionStrings: CONNECTION_STRING_1;CONNECTION_STRING2;CONNECTION_STRING3
-cronLocalRunningExp: '* * * * *'
-ignoreCurrentTime: false
+cronLocalRunningExp: '* 0 * * *'
+ignoreCurrentTime: true
 
 
 # This is a YAML-formatted file.
