@@ -56,5 +56,24 @@ You can then run `helm search repo teletrace` to see the charts.
 - `API_KEY`: Metis Api Key generated at [Metis](https://app.metisdata.io/)
 
 
+### Clean up
+
+```sh
+helm delete metis-mmc --namespace metis
+```
+
 ## Conclusion
 In this tutorial, you learned how to install Metis collector using Helm chart. Helm chart simplifies the installation and management of Metis collector in a Kubernetes cluster. You can customize the installation by modifying the values in the Helm chart. With Metis collector installed, you can now use it to get better observability and reports of your databases.
+
+
+## For developers 
+ 
+### Release new version
+1. Update chart version here: `charts/metis-md-collector/Chart.yaml`
+
+2. Package helm and update index: 
+```sh
+cd ./helm-charts/charts
+helm package metis-md-collector
+helm repo index . --url https://metis-data.github.io/helm-charts/ --merge index.yaml 
+```

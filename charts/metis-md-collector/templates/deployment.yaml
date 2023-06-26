@@ -34,26 +34,26 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: APP_ENV
-              value: "{{ .Values.appEnv }}"
-            - name: API_GATEWAY_HOST
-              value: "{{ .Values.apiGatewayHost }}"
-            - name: API_GATEWAY_PATH
-              value: "{{ .Values.apiGatewayPath }}"
-            - name: API_GATEWAY_PORT
-              value: "{{ .Values.apiGatewayPort }}"
-            - name: WEB_APP_HOST
-              value: "{{ .Values.webAppHost }}"
-            - name: WEB_APP_PORT
-              value: "{{ .Values.webAppPort }}"
             - name: API_KEY
               value: "{{ .Values.apiKey | required "Api key is required" }}"
             - name: DB_CONNECTION_STRINGS
               value: "{{ .Values.dbConnectionStrings | required "Connection string is required" }}"
-            - name: IGNORE_CURRENT_TIME
-              value: "{{ .Values.ignoreCurrentTime }}"
-            - name: CRON_LOCAL_RUNNING_EXP 
-              value: "{{ .Values.cronLocalRunningExp }}"
+            # - name: APP_ENV
+            #   value: "{{ .Values.appEnv }}"
+            # - name: API_GATEWAY_HOST
+            #   value: "{{ .Values.apiGatewayHost }}"
+            # - name: API_GATEWAY_PATH
+            #   value: "{{ .Values.apiGatewayPath }}"
+            # - name: API_GATEWAY_PORT
+            #   value: "{{ .Values.apiGatewayPort }}"
+            # - name: WEB_APP_HOST
+            #   value: "{{ .Values.webAppHost }}"
+            # - name: WEB_APP_PORT
+            #   value: "{{ .Values.webAppPort }}"
+            # - name: IGNORE_CURRENT_TIME
+            #   value: "{{ .Values.ignoreCurrentTime }}"
+            # - name: CRON_LOCAL_RUNNING_EXP 
+              # value: "{{ .Values.cronLocalRunningExp }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
